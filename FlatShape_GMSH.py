@@ -80,7 +80,7 @@ if __name__ == "__main__":
     # #Default Setting added to save having to input over and over again
 
 
-    STEP_Folder_Path = "Examples/Test1_Circle/STEP_geometry"
+    STEP_Folder_Path = "Examples\Test1_Circle\STEP_geometry"
     #Default path defined here
    
     STEP_Folder_Path = UI_Set_Variable(STEP_Folder_Path, "STEP Folder Path", Default_Setting)
@@ -92,9 +92,14 @@ if __name__ == "__main__":
     gmsh.clear()
     #clear all previous GMSH geometry
 
+    gmsh.model.add("FlatShape_GMSH")
+
+    print(os.path.join(STEP_Folder_Path, "Laser_Weld_Perimeter.stp"))
 
     """Import STEP files"""
     Inflated_Surface_Perimeter_Curves = gmsh.model.occ.importShapes(os.path.join(STEP_Folder_Path, "Laser_Weld_Perimeter.stp"))
+
+    
 
     Outer_Cut_Curve = gmsh.model.occ.importShapes(os.path.join(STEP_Folder_Path, "Laser_Cut_Curve.stp"))
     
